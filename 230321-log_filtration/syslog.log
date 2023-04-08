@@ -1,0 +1,34 @@
+July 31 00:06:21 mycomputername kernel[96041]: WARN Failed to start network connection
+July 31 00:09:53 mycomputername updater[46711]: WARN Computer needs to be turned off and on again
+July 31 00:12:36 mycomputername kernel[48462]: INFO Successfully connected
+July 31 00:13:52 mycomputername updater[43530] ERROR Error running Python2.exe: Segmentation Fault (core dumped)
+July 31 00:16:13 mycomputername NetworkManager[63902]: WARN Failed to start application install
+July 31 00:26:45 mycomputername CRON[83063]: INFO I'm sorry Dave. I'm afraid I can't do that
+July 31 00:27:56 mycomputername cacheclient[75746]: WARN PD Load Letter
+July 31 00:33:31 mycomputername system[25588]: ERROR Out of yellow link, specifically, even though you want grayscale
+July 31 00:36:55 mycomputername updater[73786]: WARN Packet loss
+July 31 00:37:38 mycomputername dhcpclient[87602]: INFO Googling the answer
+May 27 11:45:40 ubuntu.local ticky: INFO: Created ticket [#1234] (username)
+Jun 1 11:06:48 ubuntu.local ticky: ERROR: Connection to DB failed (username)
+Jan 31 00:09:39 ubuntu.local ticky: INFO Created ticket [#4217] (mdouglas)
+Jan 31 00:16:25 ubuntu.local ticky: INFO Closed ticket [#1754] (noel)
+Jan 31 00:21:30 ubuntu.local ticky: ERROR The ticket was modified while updating (breee)
+Jan 31 00:44:34 ubuntu.local ticky: ERROR Permission denied while closing ticket (ac)
+Jan 31 01:00:50 ubuntu.local ticky: INFO Commented on ticket [#4709] (blossom)
+Jan 31 01:29:16 ubuntu.local ticky: INFO Commented on ticket [#6518] (rr.robinson)
+Jan 31 01:33:12 ubuntu.local ticky: ERROR Tried to add information to closed ticket (mcintosh)
+Jan 31 01:43:10 ubuntu.local ticky: ERROR Tried to add information to closed ticket (jackowens)
+Jan 31 01:49:29 ubuntu.local ticky: ERROR Tried to add information to closed ticket (mdouglas)
+Jan 31 02:30:04 ubuntu.local ticky: ERROR Timeout while retrieving information (oren)
+Jan 31 02:55:31 ubuntu.local ticky: ERROR Ticket doesn't exist (xlg)
+Jan 31 03:05:35 ubuntu.local ticky: ERROR Timeout while retrieving information (ahmed.miller)
+Jan 31 03:08:55 ubuntu.local ticky: ERROR Ticket doesn't exist (blossom)
+Jan 31 03:39:27 ubuntu.local ticky: ERROR The ticket was modified while updating (bpacheco)
+Jan 31 04:31:49 ubuntu.local ticky: ERROR Tried to add information to closed ticket (oren)
+Jan 31 05:12:39 ubuntu.local ticky: ERROR Tried to add information to closed ticket (oren)
+Jan 31 08:01:40 ubuntu.local ticky: ERROR Tried to add information to closed ticket (sri)
+Jan 31 09:04:27 ubuntu.local ticky: ERROR Tried to add information to closed ticket (jaskowens)
+Jan 31 11:04:02 ubuntu.local ticky: ERROR Tried to add information to closed ticket (noel)
+Jan 31 11:58:33 ubuntu.local ticky: ERROR Tried to add information to closed ticket (bree)
+Jan 31 12:58:16 ubuntu.local ticky: ERROR Tried to add information to closed ticket (ahmed.miller)
+Jan 31 14:56:35 ubuntu.local ticky: ERROR Tried to add information to closed ticket (noel)

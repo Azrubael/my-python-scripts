@@ -1,0 +1,16 @@
+body {
+    font-family: monospace;
+    background-color: lightblue;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    }
+
+img {
+    width: 300px;
+    }
+
+h1, p {
+  color: navy;
+  font-family: Lato;
+}

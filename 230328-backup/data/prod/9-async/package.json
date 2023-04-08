@@ -1,0 +1,12 @@
+{
+  "name": "9-promises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js 1000"
+  },
+  "keywords": [],
+  "author": "Azrubael <i0638464000@gmail.com>",
+  "license": "ISC"
+}

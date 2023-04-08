@@ -1,0 +1,22 @@
+We've now gone over the problems statement of our final project. At first sight, it might sound pretty complex. But let's break it down into smaller more digestible pieces and discuss how we can move into the next steps to do the necessary research and planning. We've said that we want to find some specific log lines in the sy log file. We strongly recommend that you use regular expressions to find them. It'll be easier to extract information you want that way. To figure out the right regular expression, you can use a website like regex101.com which can help you test your expression and understand what's going on with it. Once you have a pattern that you think and work, try it out in a Python interpreter to verify that it matches the right lines and captures the right information. After extracting the information, you'll need to count how many errors are of the same type, and how many info and error messages there are for a given user. Can you think of what data structure might help you with that? If you're thinking dictionaries, then you're on the right track. You'll want to use a couple of different dictionaries. One to account error messages and another to count per user usage. You'll then need to sort the data in a dictionary's by different criteria. We looked at sorting in the Introduction to Python course. Feel free to re-watch that video and reread the Python documentation on sorting. The output of your Python script should be a couple of CSV files. Each of them containing the names of the columns and the data in the order that it needs to be presented. Once those files are generated, you'll need to call the CSV html.py script to create HTML files based on CSV data. You'll have access to look at how the script works but the key is to pass two parameters to it. The name of the CSV file to read and the name of the HTML file generate. You could do this last step from either a Python script or a bash script. Since the script will be only calling commands and moving files, we recommend doing a bash. Keep it short and sweet. We recommend that you research, plan and even write the pieces of code all before starting the actual lab. Good luck. You've got it. 
+
+===========
+
+Мы рассмотрели постановку задач нашего финального проектаб давайте разобьем его на более мелкие части и обсудим, как мы можем перейти к исследованиям и планированиею.
+
+Мы хотим найти некоторые определенные строки журнала в файле журнала 'sy'.
+Мы настоятельно рекомендуем вам использовать регулярные выражения для их поиска.
+Чтобы определить правильное регулярное выражение, вы можете использовать веб-сайт regex101.com, который может помочь вам протестировать ваше выражение.
+
+Когда у вас есть RegExp шаблон, попробуйте его в интерпретаторе Python, чтобы убедиться, что он соответствует нужным строкам и фиксирует правильную информацию.
+
+После извлечения информации вам нужно будет подсчитать, сколько ошибок одного типа и сколько информации и сообщений об ошибках для данного пользователя. Можете ли вы подумать, какая структура данных может помочь вам в этом? Если вы думаете словарями, то вы на правильном пути. Вы захотите использовать несколько разных словарей^
+	- Один для учета сообщений об ошибках
+	- Lругой для подсчета использования пользователем.
+Затем вам нужно будет отсортировать данные в словаре по разным критериям. Мы рассмотрели сортировку в курсе «Введение в Python». Не стесняйтесь пересмотреть это видео и перечитать документацию Python по сортировке.
+
+Результатом вашего скрипта Python должна быть пара файлов CSV. Каждый из них содержит имена столбцов и данные в том порядке, в котором они должны быть представлены.
+После создания этих файлов вам потребуется вызвать скрипт csv_to_html.py, чтобы создать файлы HTML на основе данных CSV. У вас будет доступ, чтобы посмотреть, как работает скрипт, но ключ в том, чтобы передать ему два параметра:
+	- Имя CSV-файла для чтения
+	- Имя генерируемого HTML-файла.
+Этот последний шаг мы рекомендуем выполнить bash.

@@ -1,0 +1,6 @@
+Error,Count
+Tried to add information to closed ticket,11
+The ticket was modified while updating,2
+Timeout while retrieving information,2
+Ticket doesn't exist,2
+Permission denied while closing ticket,1
