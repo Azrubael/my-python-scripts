@@ -125,13 +125,13 @@ def main():
 
     # sending the PDF report as an email attachment
     email_data = {}
-    email_data['sender'] = "peregarien@gmail.com"
-    email_data['receiver'] = "i0638464000@gmail.com"
+    email_data['sender'] = "p\@gmail.com"
+    email_data['receiver'] = "i\@gmail.com"
     email_data['subject'] = "Sales Summary Challenge"
     email_data['body'] = "\n".join(summary)
     email_data['attachment_path'] = "mycars.pdf"
 
-    # mygmails.mailservice(email_data)
+    mygmails.mailservice(email_data)
 
 if __name__ == "__main__":
     main()
