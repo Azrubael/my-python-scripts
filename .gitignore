@@ -2,6 +2,7 @@
 /*google
 /google*
 
+**/__pycache__/
 /.vscode
 .DS_Store
 .env.local

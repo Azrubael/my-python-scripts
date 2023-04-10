@@ -2,9 +2,8 @@
 
 import json
 import locale
-# import os
-# import sys
-# import emails
+import os
+import mygmails
 import reports
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
@@ -132,25 +131,25 @@ def diagram_create(in_data):
 
 def main():
     """Process the JSON data and generate a full report out of it."""
-    data = load_data("../car_sales.json")
+    data = load_data("car_sales.json")
     summary = process_data(data)
     print(summary)
     sorted_data = cars_sort_dict(data)
-    # turn this into a PDF report
+    
+    # creating a PDF report
     table_data = cars_dict_to_table(sorted_data)
-    diagram = diagram_create(table_data)
-    reports.generate("mycars.pdf", "Sales summary for last month", "<br/>".join(summary), table_data, diagram)
-    # reports.generate("/tmp/cars.pdf", "Sales summary for last month", "<br/>".join(summary), table_data)
+    # diagram = diagram_create(table_data)
+    reports.generate("mycars.pdf", "Sales summary for last month", "<br/>".join(summary), table_data)
 
-    # send the PDF report as an email attachment
-    # sender = "automation@example.com"
-    # receiver = "{}@example.com".format(os.environ.get('USER'))
-    # subject = "Sales summary for last month"
-    # body = "\n".join(summary)
+    # sending the PDF report as an email attachment
+    sender = "peregarien@gmail.com"
+    receiver = "i0638464000@gmail.com"
+    subject = "Sales Summary Challenge"
+    body = "\n".join(summary)
 
-    # message = emails.generate(sender, receiver, subject, body, "/tmp/cars.pdf")
-    # emails.send(message)
-
+    msg = mygmails.generate(sender, receiver, subject, body, "mycars.pdf")
+    mygmails.send(msg, sender)
+    print('A message sent to', receiver)
 
 if __name__ == "__main__":
     main()

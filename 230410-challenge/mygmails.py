@@ -41,6 +41,14 @@ def send(msg, sender):
     mail_server.send_message(msg)
     mail_server.quit()
 
+
+# def email_sender():
+# Для реализации этой функции потребуется рефактринг модуля:
+# - сформировать словарь с полями
+#       sender, recipient, subject, body, attachment_path, msg
+# - рефакторить функции generate и send
+# - сделать вызов в main()
+
 if __name__ == "__main__":
     recipient = "i0638464000@gmail.com"
     sender = "peregarien@gmail.com"
