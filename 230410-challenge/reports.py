@@ -9,14 +9,19 @@ from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Paragraph, Spacer, Table
 
 
-
 def generate(pdf_data):
-    """Creates a new pdf file with a table"""
+    """Creates a new pdf file with a table.
+    """
     file = pdf_data['filename']
     title = pdf_data['title']
     additional_info = pdf_data['summary']
     table_data = pdf_data['table']
     bars_chart_data = pdf_data['bars_chart']
+    chart_legend = pdf_data['chart_legend']
+    chart_note = pdf_data['chart_note']
+    
+    note_style = styles["h3"]
+    note_style.alignment = 1
 
     styles = getSampleStyleSheet()
     report = SimpleDocTemplate(file)
@@ -30,52 +35,46 @@ def generate(pdf_data):
     report_table = Table(data=table_data, style=table_style, hAlign='LEFT')
     empty_line = Spacer(1,20)
     if bars_chart_data == None:
-        report.build([report_title, empty_line, report_info, empty_line, report_table])
+        report.build([report_title, empty_line, report_info,
+                      empty_line, report_table])
     else:
         report_bars_chart = bars_chart_create(bars_chart_data)
-        report.build([report_title, empty_line, report_info, empty_line, report_table, report_bars_chart])
+        report_chart_title = Paragraph(chart_legend, styles["h1"])
+        report_chart_note = Paragraph(chart_note, note_style)
+
+        report.build([report_title, empty_line, report_info,
+                      empty_line, report_table, empty_line,
+                      report_chart_title, report_chart_note,
+                      empty_line, report_bars_chart])
 
 
 def bars_chart_create(in_data):
-
+    """Generates a bar chart object `bc`.
+    """
     locale.setlocale(locale.LC_ALL, 'en_US.UTF8')
-
-    drawing = Drawing(width=400, height=200)
-    bar_chart = VerticalBarChart()
-    bar_chart.x = len(in_data)
-    bar_chart.y = in_data[-1][3]
-    bar_chart.strokeColor = colors.black
-    bar_chart.data = []
-    bar_chart.valueAxis.valueMin = 0
-    bar_chart.valueAxis.valueMax = 0
-    bar_chart.categoryAxis.labels.angle = 90
-    bar_chart.categoryAxis.categoryNames = []
+    bc = VerticalBarChart()
+    bc.strokeColor = colors.black
+    bc.data = [[]]
+    bc.categoryAxis.categoryNames = []
+    bc.valueAxis.valueMin = 0
+    bc.valueAxis.valueMax = 0
+    bc.categoryAxis.labels.angle = 90
+    bc.categoryAxis.labels.fontName = 'Helvetica'
+    bc.categoryAxis.labels.fontSize = 10
+    bc.categoryAxis.labels.boxAnchor = 'ne'
     for item in in_data:
         item_price = round(locale.atof(item[2].strip("$")))
         item_profit = item[3]*item_price
-        if item_profit > bar_chart.valueAxis.valueMax:
-            bar_chart.valueAxis.valueMax = item_profit
-        print(item[1], '$'+str(item_profit))
-        bar_chart.data.append([item_profit])
-        bar_chart.categoryAxis.categoryNames.append(item[1])
-    bar_chart.valueAxis.valueStep = round(bar_chart.valueAxis.valueMax / 100)
-    return drawing.add(bar_chart)
-
-
-if __name__ == "__main__":
-    filename = 'test_report.pdf'
-    title = 'Title with Style [h1]'
-    additional_info = 'Body text'
-    table_data  = [
-        ['Name', 'Amount', 'Mass'],
-        ["elderberries", 19, 1.0],
-        ["figs", 15, 0.5],
-        ["apples", 25, 2.89],
-        ["durians", 37, 1.79],
-        ["bananas", 57, 5.7],
-        ["cherries", 87, 1.37],
-        ["grapes", 17, 7.5]
-        ]
-    bars_chart_data = None
-    generate(filename, title, additional_info, table_data, bars_chart_data)
-    print('A new file generated: ', filename)
+        if item_profit > bc.valueAxis.valueMax:
+            bc.valueAxis.valueMax = item_profit
+        bc.data[0].append(item_profit)
+        bc.categoryAxis.categoryNames.append(item[1])
+    print(bc.data[0])
+    bc.valueAxis.valueStep = round(bc.valueAxis.valueMax / 10)
+    bc.height = 330
+    bc.width = 330
+    bc.x = 50
+    dwg = Drawing(350, 350)
+    dwg.add(bc)
+    # dwg.save(formats=['pdf'], outDir='.', fnRoot='test')
+    return dwg
