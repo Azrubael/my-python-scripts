@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-"""Second iteration of a PDF report with a table and a pie diagram"""
+"""Third iteration of a PDF report with a table and a pie diagram"""
 
 from reportlab.platypus import Paragraph, Spacer, Table, Image
 from reportlab.platypus import SimpleDocTemplate

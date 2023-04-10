@@ -1,4 +1,7 @@
 #! /usr/bin/env python3
+"""
+This module generates `test_report.pdf` with a table
+"""
 
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Paragraph, Spacer, Table, Image

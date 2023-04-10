@@ -26,8 +26,8 @@ def generate(sender, recipient, subject, body, attachment_path):
                 maintype=mime_type,
                 subtype=mime_subtype,
                 filename=attachment_filename)
-    
     return msg
+
 
 def send(msg, sender):
     """Sends a message to the configured SMTP SSL server."""
@@ -59,8 +59,6 @@ if __name__ == "__main__":
     email_data['receiver'] = "i_example@gmail.com"
     email_data['subject'] = "test"
     email_data['body'] = "test"
-
-
     if len(sys.argv) > 1:
         email_data['attachment_path'] = sys.argv[1]
     else:

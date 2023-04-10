@@ -2,12 +2,9 @@
 
 import json
 import locale
-import os
 import mygmails
 import reports
-from reportlab.graphics.shapes import Drawing
-from reportlab.graphics.charts.barcharts import VerticalBarChart
-from reportlab.lib import colors
+
 
 def load_data(filename):
     """Loads the contents of filename as a JSON file."""
@@ -93,40 +90,20 @@ def cars_sort_dict(in_data):
     return merge_list(left, right)
 
 
-def diagram_create(in_data):
+def bars_chart_list(in_data):
     list_length = len(in_data)
+    bars_chart_length = 0
     if list_length <= 1:
-        text = "Lenth of the cars list for diagram have to be more than zero"
+        text = "Lenth of the cars list for bars chart have to be more than zero"
         print(text)
         return text
     if list_length >= 11:
-        diagram_length = 10
+        bars_chart_length = 10
     else:
-        diagram_length = list_length - 1
+        bars_chart_length = list_length
+    out_list = in_data[ list_length - bars_chart_length : ]
 
-    data_list = in_data[ list_length - diagram_length : ]
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF8')
-
-    drawing = Drawing(400, 200)
-    bar_chart = VerticalBarChart()
-    bar_chart.x = diagram_length
-    bar_chart.y = data_list[-1][3]
-    bar_chart.strokeColor = colors.black
-    bar_chart.data = []
-    bar_chart.valueAxis.valueMin = 0
-    bar_chart.valueAxis.valueMax = 0
-    bar_chart.categoryAxis.labels.angle = 90
-    bar_chart.categoryAxis.categoryNames = []
-    for item in data_list:
-        item_price = round(locale.atof(item[2].strip("$")))
-        item_profit = item[3]*item_price
-        if item_profit > bar_chart.valueAxis.valueMax:
-            bar_chart.valueAxis.valueMax = item_profit
-        print(item[1], '$'+str(item_profit))
-        bar_chart.data.append([item[1], item_profit])
-        bar_chart.categoryAxis.categoryNames.append(item[1])
-    bar_chart.valueAxis.valueStep = round(bar_chart.valueAxis.valueMax / 1000)
-    return drawing.add(bar_chart)
+    return out_list
 
 
 def main():
@@ -139,7 +116,13 @@ def main():
     # creating a PDF report
     table_data = cars_dict_to_table(sorted_data)
     # diagram = diagram_create(table_data)
-    reports.generate("mycars.pdf", "Sales summary for last month", "<br/>".join(summary), table_data)
+    pdf_data = {}
+    pdf_data['filename'] = 'mycars.pdf'
+    pdf_data['title'] = "Sales summary for last month"
+    pdf_data['summary'] = "<br/>".join(summary)
+    pdf_data['table'] = table_data
+    pdf_data['bars_chart'] = bars_chart_list(table_data)
+    reports.generate(pdf_data)
 
     # sending the PDF report as an email attachment
     email_data = {}
@@ -149,7 +132,7 @@ def main():
     email_data['body'] = "\n".join(summary)
     email_data['attachment_path'] = "mycars.pdf"
 
-    mygmails.mailservice(email_data)
+    # mygmails.mailservice(email_data)
 
 if __name__ == "__main__":
     main()
