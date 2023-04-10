@@ -10,8 +10,8 @@ from smtplib import SMTPAuthenticationError
 import ssl
 
 message = EmailMessage()
-recipient = "i\@gmail.com"
-sender = "p\@gmail.com"
+recipient = "you@example.com"
+sender = "me@example.com"
 """ При отправке сообщения через службу жмейл следует учесть, что:
 - ссл использовать обязательно,
 - порт должен быть 465,
