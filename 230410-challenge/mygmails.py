@@ -42,24 +42,28 @@ def send(msg, sender):
     mail_server.quit()
 
 
-# def email_sender():
-# Для реализации этой функции потребуется рефактринг модуля:
-# - сформировать словарь с полями
-#       sender, recipient, subject, body, attachment_path, msg
-# - рефакторить функции generate и send
-# - сделать вызов в main()
-
-if __name__ == "__main__":
-    recipient = "i0638464000@gmail.com"
-    sender = "peregarien@gmail.com"
-    subject = 'test'
-    body = 'test'
-
-    if len(sys.argv) > 1:
-        attachment_path = sys.argv[1]
-    else:
-        attachment_path = ''
-   
+def mailservice(email_data):
+    sender = email_data['sender']
+    recipient = email_data['receiver']
+    subject = email_data['subject']
+    body = email_data['body']
+    attachment_path = email_data['attachment_path']
     msg = generate(sender, recipient, subject, body, attachment_path)
     send(msg, sender)
     print('A message sent to', recipient)
+
+
+if __name__ == "__main__":
+    email_data = {}
+    email_data['sender'] = "p_example@gmail.com"
+    email_data['receiver'] = "i_example@gmail.com"
+    email_data['subject'] = "test"
+    email_data['body'] = "test"
+
+
+    if len(sys.argv) > 1:
+        email_data['attachment_path'] = sys.argv[1]
+    else:
+        email_data['attachment_path'] = ''
+
+    mailservice(email_data)

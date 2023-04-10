@@ -142,14 +142,14 @@ def main():
     reports.generate("mycars.pdf", "Sales summary for last month", "<br/>".join(summary), table_data)
 
     # sending the PDF report as an email attachment
-    sender = "peregarien@gmail.com"
-    receiver = "i0638464000@gmail.com"
-    subject = "Sales Summary Challenge"
-    body = "\n".join(summary)
+    email_data = {}
+    email_data['sender'] = "peregarien@gmail.com"
+    email_data['receiver'] = "i0638464000@gmail.com"
+    email_data['subject'] = "Sales Summary Challenge"
+    email_data['body'] = "\n".join(summary)
+    email_data['attachment_path'] = "mycars.pdf"
 
-    msg = mygmails.generate(sender, receiver, subject, body, "mycars.pdf")
-    mygmails.send(msg, sender)
-    print('A message sent to', receiver)
+    mygmails.mailservice(email_data)
 
 if __name__ == "__main__":
     main()
