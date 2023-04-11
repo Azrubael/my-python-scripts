@@ -43,8 +43,9 @@ def generate(pdf_data):
     report.build([report_title, empty_line, report_info,
                 empty_line, report_table, empty_line,
                 report_bc_title, report_bc_note,
-                empty_line, report_bc, empty_line,
-                report_pc])
+                empty_line, report_bc, empty_line, report_pc,
+                empty_line, empty_line, report_bc_title,
+                report_bc_note])
 
 
 def bars_chart_create(in_data):
@@ -74,6 +75,7 @@ def bars_chart_create(in_data):
     bc.x = 50
     dwg = Drawing(350, 350)
     dwg.add(bc)
+    # to save 'test.pdf' in a current directory
     # dwg.save(formats=['pdf'], outDir='.', fnRoot='test')
     return dwg
 
@@ -99,4 +101,6 @@ def pie_chart_create(in_data):
     pc.height = 200
     dwg = Drawing(250,250)
     dwg.add(pc)
+    # to save 'test.pdf' in a current directory
+    # dwg.save(formats=['pdf'], outDir='.', fnRoot='test')
     return dwg
