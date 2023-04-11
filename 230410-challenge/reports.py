@@ -3,6 +3,7 @@
 import locale
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
+from reportlab.graphics.charts.piecharts import Pie
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate
@@ -16,14 +17,14 @@ def generate(pdf_data):
     title = pdf_data['title']
     additional_info = pdf_data['summary']
     table_data = pdf_data['table']
-    bars_chart_data = pdf_data['bars_chart']
-    chart_legend = pdf_data['chart_legend']
-    chart_note = pdf_data['chart_note']
+    chart_data = pdf_data['chart_data']
+    chart_legend = pdf_data['bc_legend']
+    chart_note = pdf_data['bc_note']
     
+    styles = getSampleStyleSheet()
     note_style = styles["h3"]
     note_style.alignment = 1
 
-    styles = getSampleStyleSheet()
     report = SimpleDocTemplate(file)
     report_title = Paragraph(title, styles["h1"])
     report_info = Paragraph(additional_info, styles["BodyText"])
@@ -34,18 +35,16 @@ def generate(pdf_data):
         ]
     report_table = Table(data=table_data, style=table_style, hAlign='LEFT')
     empty_line = Spacer(1,20)
-    if bars_chart_data == None:
-        report.build([report_title, empty_line, report_info,
-                      empty_line, report_table])
-    else:
-        report_bars_chart = bars_chart_create(bars_chart_data)
-        report_chart_title = Paragraph(chart_legend, styles["h1"])
-        report_chart_note = Paragraph(chart_note, note_style)
+    report_bc = bars_chart_create(chart_data)
+    report_bc_title = Paragraph(chart_legend, styles["h1"])
+    report_bc_note = Paragraph(chart_note, note_style)
+    report_pc = pie_chart_create(chart_data)
 
-        report.build([report_title, empty_line, report_info,
-                      empty_line, report_table, empty_line,
-                      report_chart_title, report_chart_note,
-                      empty_line, report_bars_chart])
+    report.build([report_title, empty_line, report_info,
+                empty_line, report_table, empty_line,
+                report_bc_title, report_bc_note,
+                empty_line, report_bc, empty_line,
+                report_pc])
 
 
 def bars_chart_create(in_data):
@@ -69,7 +68,6 @@ def bars_chart_create(in_data):
             bc.valueAxis.valueMax = item_profit
         bc.data[0].append(item_profit)
         bc.categoryAxis.categoryNames.append(item[1])
-    print(bc.data[0])
     bc.valueAxis.valueStep = round(bc.valueAxis.valueMax / 10)
     bc.height = 330
     bc.width = 330
@@ -77,4 +75,28 @@ def bars_chart_create(in_data):
     dwg = Drawing(350, 350)
     dwg.add(bc)
     # dwg.save(formats=['pdf'], outDir='.', fnRoot='test')
+    return dwg
+
+
+def pie_chart_create(in_data):
+    """Generates a pie chart object `pc`.
+    """
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF8')
+    pc = Pie()
+    pc.data = []
+    pc.labels = []
+    for item in in_data:
+        item_price = round(locale.atof(item[2].strip("$")))
+        item_profit = item[3]*item_price
+        pc.data.append(item_profit)
+        pc.labels.append(item[1])
+    print(pc.data)
+    pc.sideLabels = 1
+    pc.sideLabelsOffset = 0.1
+    pc.x = 100
+    # pc.y = 50
+    pc.width = 200
+    pc.height = 200
+    dwg = Drawing(250,250)
+    dwg.add(pc)
     return dwg

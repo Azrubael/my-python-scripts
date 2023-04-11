@@ -118,9 +118,9 @@ def main():
     pdf_data['title'] = "Sales summary for last month"
     pdf_data['summary'] = "<br/>".join(summary)
     pdf_data['table'] = table_data
-    pdf_data['bars_chart'] = bars_chart_list(table_data)
-    pdf_data['chart_legend'] = "Profit from the sale of 10 most popular models"
-    pdf_data['chart_note'] = "(see 10 last lines of the table)"
+    pdf_data['chart_data'] = bars_chart_list(table_data)
+    pdf_data['bc_legend'] = "Profit from the sale of 10 most popular models"
+    pdf_data['bc_note'] = "(see 10 last lines of the table)"
     reports.generate(pdf_data)
 
     # sending the PDF report as an email attachment
@@ -131,7 +131,7 @@ def main():
     email_data['body'] = "\n".join(summary)
     email_data['attachment_path'] = "mycars.pdf"
 
-    mygmails.mailservice(email_data)
+    # mygmails.mailservice(email_data)
 
 if __name__ == "__main__":
     main()
