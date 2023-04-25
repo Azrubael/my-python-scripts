@@ -1,0 +1,10 @@
+July 31 00:06:21 mycomputername kernel[96041]: WARN Failed to start network connection
+July 31 00:09:53 mycomputername updater[46711]: WARN Computer needs to be turned off and on again
+July 31 00:12:36 mycomputername kernel[48462]: INFO Successfully connected
+July 31 00:13:52 mycomputername updater[43530] ERROR Error running Python2.exe: Segmentation Fault (core dumped)
+July 31 00:16:13 mycomputername NetworkManager[63902]: WARN Failed to start application install
+July 31 00:26:45 mycomputername CRON[83063]: INFO I'm sorry Dave. I'm afraid I can't do that
+July 31 00:27:56 mycomputername cacheclient[75746]: WARN PD Load Letter
+July 31 00:33:31 mycomputername system[25588]: ERROR Out of yellow link, specifically, even though you want grayscale
+July 31 00:36:55 mycomputername updater[73786]: WARN Packet loss
+July 31 00:37:38 mycomputername dhcpclient[87602]: INFO Googling the answer
