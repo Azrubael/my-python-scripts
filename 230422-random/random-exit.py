@@ -3,6 +3,6 @@
 import sys
 import random
 
-value=random.randint(1,12)
+value=random.randint(0,9)
 print("Returning: " + str(value))
 sys.exit(value)
