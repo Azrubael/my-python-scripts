@@ -6,7 +6,7 @@ source = "./data/"
 destination = "./updated/"
 
 """
-A bulk renaming of files with the addition of a three-digit index at the end of each name
+Bulk file renaming with the addition of a three-digit index at the end of each name
 """
 
 for directory, subdirs, files in os.walk(source):
