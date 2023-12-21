@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Install required RabbitMQ client library
+      pip:
+        name: pika
+        state: present
+
+    - name: Receive message from RabbitMQ and print to stdout
+      # Необхідно замінити YOUR_* на фактичні значення
+      vars:
+        queue_host: "YOUR_RABBITMQ_HOST"
+        queue_user: "YOUR_RABBITMQ_USERNAME"
+        queue_pass: "YOUR_RABBITMQ_PASSWORD"
+        queue_name: "YOUR_QUEUE_NAME"
+      script: |
+        import pika
+
+        def callback(ch, method, properties, body):
+            print("Received message: %r" % body)
+
+        connection = pika.BlockingConnection(pika.ConnectionParameters(queue_host, 5672, '/', pika.PlainCredentials(queue_user, queue_pass)))
+        channel = connection.channel()
+        channel.queue_declare(queue=queue_name)
+        channel.basic_consume(queue=queue_name, on_message_callback=callback, auto_ack=True)
+        print('Waiting for messages. To exit press CTRL+C')
+        channel.start_consuming()
+
+# У цьому файлі конфігурації ми визначаємо один хост (localhost) та дві задачі:
+#    • Встановлення необхідної бібліотеки RabbitMQ для Python за допомогою модуля pip
+#    • Отримання повідомлень з RabbitMQ та виведення їх в stdout за допомогою скрипту на мові Python. В цій задачі ми використовуємо бібліотеку pika для з'єднання з RabbitMQ, отримання повідомлень з черги та їх виведення в stdout
