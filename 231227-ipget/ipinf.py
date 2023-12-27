@@ -1,6 +1,9 @@
 import requests
 import json
+import folium
+import os
 from pyfiglet import Figlet
+from datetime import datetime
 
 
 def ip2inf(ip):
@@ -20,9 +23,26 @@ def ip2inf(ip):
         }
         for k, v in data.items():
             print(f'{k:18} : {v}')
+        
+        ms = round(datetime.now().timestamp() * 1e4)
+        full_path = check_dir('OUTPUT') + \
+                f"{res.get('query')}_{res.get('city')}_{ms}.html"
+        area = folium.Map(location=[res.get('lat'), res.get('lon')])
+        area.save(full_path)
+        print('\nA file is saved in a directory:\n', full_path)
 
     except requests.exceptions.ConnectionError:
         print('[!] Please check your connection!')
+
+
+def check_dir(path):
+    full_path = os.getcwd() + f'/{path}/'
+    if not os.path.exists(full_path):
+        try:
+            os.makedirs(path)
+        except:
+            print('Error of creating a directory:', full_path)
+    return full_path
 
 
 def main():
