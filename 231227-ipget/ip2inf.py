@@ -1,6 +1,8 @@
 import requests
 import json
 
+# Get detailed information about a host by its IP
+
 
 def ip2inf(ip):
     try:

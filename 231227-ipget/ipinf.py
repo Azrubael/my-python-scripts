@@ -6,6 +6,13 @@ from pyfiglet import Figlet
 from datetime import datetime
 
 
+""" Getting detailed information about host by its IP:
+- getting detailed data in JSON (from host 24.48.0.1 by default);
+- making pretty output on a screen;
+- saving an HTML file with map in a directory ./OUTPUT
+"""
+
+
 def ip2inf(ip):
     try:
         res = requests.get(url=f'http://ip-api.com/json/{ip}').json()
@@ -50,7 +57,7 @@ def main():
     print(preview.renderText('INFO FROM IP'))
     default_ip = '24.48.0.1'
     print(f'The default IP is', default_ip)
-    ip = input('Please enter a target IP: ')
+    ip = input('Please enter the target IP: ')
     if ip == '':
         ip = default_ip
     ip2inf(ip)
