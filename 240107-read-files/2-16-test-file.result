@@ -1,0 +1,144 @@
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+1 
+Enter the name. 
+Alex 
+Enter the address 
+357 Backstreer av 
+ 
+Enter the order. 
+Enter the name of the pizza.  
+Peperoni 
+Enter the cost of the pizza. 
+7.5 
+Enter the quantity. 
+3 
+Finish order 0-yes 1-no. 
+1 
+Enter the name of the pizza. 
+4 seasons 
+Enter the cost of the pizza. 
+9.5 
+Enter the quantity. 
+4 
+Finish order 0-yes 1-no. 
+0 
+ Total amount – $60.50. 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+1 
+Enter the name. 
+Kris 
+Enter the address. 
+775 Backstreet av 
+ 
+Enter the order. 
+Enter the name of the pizza. 
+Calsone 
+Enter the cost of the pizza. 
+6.5 
+Enter the quantity. 
+3 
+Finish order 0-yes 1-no. 
+1 
+Enter the name of the pizza. 
+Calzone 
+Enter the cost of the pizza. 
+9 
+Enter the quantity. 
+1 
+Finish order 0-yes 1-no. 
+0 
+ Total amount – $28.50. 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+3 
+Number of clients 2 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+4 
+______________________________________________
+|  Order  
+______________________________________________
+1| Name           Alex 
+| Address 357 Backstreer av 
+| Total amount 60.50
+______________________________________________ 
+2| Name           Kris 
+| Address 775 Backstreet av 
+| Total amount 28.50
+______________________________________________  
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+2 
+ The order is deleted. 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+2 
+ The order is deleted. 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+3 
+No orders 
+ 
+ 
+1) Add an order to the queue. 
+2) Delete the order from the queue.  
+3) Count orders. 
+4) Display on a monitor. 
+0) Exit the program. 
+? 
+0
+
+
+File Information:
+
+______________________________________________ 
+ Name           Alex 
+| Address 357 Backstreer av 
+| Total amount 60.50 
+______________________________________________ 
+______________________________________________ 
+ Name           Kris 
+| Address 775 Backstreet av 
+| Total amount 28.50 
+______________________________________________
