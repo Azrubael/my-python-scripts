@@ -1,5 +1,6 @@
 """
 A script that searches for the most frequently occurring word in a text file
+With time check.
 """
 
 import os
