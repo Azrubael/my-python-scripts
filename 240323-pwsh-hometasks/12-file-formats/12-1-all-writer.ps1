@@ -1,5 +1,5 @@
 <#
-A script to get list of process (for example all firefox process) and put Name, Id, StartTime, PagedMemorySize in text files "firefox<CurrentTime>.*" of CSV/XML/JSON/YAML format in a new directory "firefox-process".
+A script to get list of processes (for example all firefox processes) and put Name, Id, StartTime, PagedMemorySize in text files "firefox<CurrentTime>.*" of CSV/XML/JSON/YAML format in a new directory "firefox-process".
 #>
 
 function ConvertTo-Yaml {
@@ -34,7 +34,6 @@ if (!(Test-Path $directoryName)) {
     New-Item -ItemType Directory -Path $directoryName
 }
 
-# $firefoxProcesses = Get-Process | Where-Object { $_.ProcessName -eq "firefox" }
 $processes = Get-Process -Name "firefox*"
 
 $currentTimestamp = Get-Date -Format "yyyyMMdd_HHmmss"
@@ -51,6 +50,7 @@ foreach ($process in $processes) {
     }
 }
 
+# convert the $processInfo into the flat array
 $flattenedArray = $processInfo | ForEach-Object {
     [PSCustomObject]@{
         Name = $_.Name
@@ -61,8 +61,8 @@ $flattenedArray = $processInfo | ForEach-Object {
 }
 
 $flattenedArray | ConvertTo-Csv -NoTypeInformation |  Out-File -FilePath "$fullFileName.csv"
-$processInfo | ConvertTo-Xml -As String | Out-File -FilePath "$fullFileName.xml"
-# $processInfo | ConvertTo-Xml  -NoTypeInformation | Select-Object -ExpandProperty OuterXml | Out-File -FilePath "$fullFileName.xml"
+$flattenedArray | ConvertTo-Xml -As String | Out-File -FilePath "$fullFileName.xml"
+# $flattenedArray | ConvertTo-Xml  -NoTypeInformation | Select-Object -ExpandProperty OuterXml | Out-File -FilePath "$fullFileName.xml"
 $processInfo | ConvertTo-Json | Out-File -FilePath "$fullFileName.json"
 $processInfo | ConvertTo-Yaml | Out-File -FilePath "$fullFileName.yaml"
 
