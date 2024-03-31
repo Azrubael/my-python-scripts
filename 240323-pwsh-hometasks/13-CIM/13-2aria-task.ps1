@@ -3,7 +3,8 @@ A script to get all interactive and remote logon sessions for the selected remot
 #>
 
 # param([string]$computername = $env:computername)
-param([string]$computername = "localhost")
+# param([string]$computername = "localhost")
+[string]$computerName = Read-Host "Enter the name of the remote computer"
 
 function Get-LoggedOnUser {
     param ($computername)
