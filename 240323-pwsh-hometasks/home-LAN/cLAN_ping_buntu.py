@@ -1,4 +1,3 @@
-
 import ipaddress
 import subprocess
 import concurrent.futures
@@ -9,7 +8,7 @@ network = ipaddress.IPv4Network('192.168.1.0/24')
 
 def ping(ip):
     try:
-        result = subprocess.run(['ping', '-n', '1', str(ip)], capture_output=True, text=True, timeout=2)
+        result = subprocess.run(['ping', '-c', '1', str(ip)], capture_output=True, text=True, timeout=2)
         if result.returncode == 0:
             return (ip, "is up")
         else:
