@@ -20,6 +20,7 @@ for key in "${!file_info[@]}"; do
 done
 
 
+# An example
 # $ ./8-key-val_240510.sh
 # File: 8-permissions-task.md, Size: 1385 bytes
 # File: 8-permissions-homework_240510.sh, Size: 104 bytes
