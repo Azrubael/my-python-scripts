@@ -11,10 +11,12 @@ OR:
 #>
 
 # Store the previous total CPU time
+
 $previousTotalCPUTime = 0
 $previousTime = Get-Date
 
 while ($true) {
+
     Clear-Host
 
     # Get the number of logical processors
@@ -31,7 +33,7 @@ while ($true) {
     # Calculate the CPU usage for each process
     $processes = Get-Process | 
         Select-Object Id, ProcessName, 
-            @{Name='CPU (%)'; Expression={[math]::round(($_.CPU / ($elapsedTime * $logicalProcessors)) / 100, 2)}}, 
+            @{Name='CPU (%)'; Expression={[math]::round(($_.CPU / ($elapsedTime * $logicalProcessors) / 10), 2)}}, 
             @{Name='WS (Mb)'; Expression={[math]::round($_.WS / 1MB, 2)}}, SI, Handles | 
         Sort-Object 'WS (Mb)' -Descending
 
