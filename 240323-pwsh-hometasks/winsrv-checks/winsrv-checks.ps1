@@ -1,5 +1,7 @@
 # Get the total memory usage of all processes, you can sum the working set of all processes:
 
+Get-Process | Sort-Object CPU -Descending | Format-Table -AutoSize
+Write-Output "===================================================="
 $TotalMemory = (Get-Process | Measure-Object -Property WorkingSet -Sum).Sum
 $TotalMemoryMB = [math]::round($TotalMemory / 1MB, 2)
 Write-Output "Total Memory Usage: $TotalMemoryMB MB"
